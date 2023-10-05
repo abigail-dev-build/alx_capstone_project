@@ -1,7 +1,7 @@
 # PROJECT OVERVIEW:
 This project is a blogging platform where users can create and publish blog posts.
 
-# Features and Functionality:
+## Features and Functionality:
 The main features of this project include user registration, authentication, and the ability to comment on blog posts.
 
 ## Technologies Used:
