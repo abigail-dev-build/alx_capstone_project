@@ -32,8 +32,8 @@
         </p>
       </div>
 
+      {% for note in user.notes %}
       <div class="blog-post">
-        {% for note in user.notes %}
         <div class="thumbnail">
           <img
             src={{ url_for('static', filename='assets/pictures/blog-image-6.jpeg') }}
@@ -42,31 +42,18 @@
           />
         </div>
         <div class="blog-content">
-          <h2 class="blog-title">5 Apps to help to meditate{{ note.title }}</h2>
-          <p>{{ note.category }}</p>
+          <h2 class="blog-title">{{ note.title }}</h2>
+          <p class="blog-category">{{ note.category }}</p>
           <p class="blog-text">
-            <!-- Create a blog post subtitle that summarizes your post in a few
-            short, punchy sentences and entices your audience to continue
-            reading.... -->
-            {{ note.data }}
+            {{ note.content }}
           </p>
           <div class="divider"></div>
           <div>
             <p class="blog-comment">0 comments</p>
           </div>
         </div>
-        {% endfor %}
       </div>
-      <!-- <ul class="list-group list-group-flush" id="notes">
-        {% for note in user.notes %}
-        <li class="list-group-item">
-          {{ note.data }}
-          <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </li>
-        {% endfor %}
-      </ul> -->
+      {% endfor %}
 
       <div class="button-wrapper">
         <button type="button" class="more-post">More Posts</button>

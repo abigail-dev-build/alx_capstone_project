@@ -78,11 +78,21 @@
     text-align: center;
     color: var(--color-pink);
   }
+  .blog-category {
+    background-color: var(--color-tomato);
+    padding: 12px;
+    font-size: var(--font-size-large);
+    color: var(--color-white);
+    width: 100px;
+    border-radius: 16px;
+
+  }
   .blog-post {
     width: 100%;
     border: 1px solid #485378;
     min-height: 220px;
     display: flex;
+    margin-bottom: 24px;
   }
   .thumbnail {
     width: 30%;

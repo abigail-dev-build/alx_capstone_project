@@ -22,9 +22,9 @@ def create_post() :
         if len(content) < 1:
             # flash('Note is too short!', category='error') 
             print('Post cannot be empty!')
-        elif len(title < 1):
+        elif len(title) < 1:
             print('Title cannot be empty!')
-        elif len(category < 1):
+        elif len(category) < 1:
             print('Category cannot be empty!')
         elif len(author) < 1:
             print('Author cannot be empty!')

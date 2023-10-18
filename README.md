@@ -2,18 +2,19 @@
 This project is a blogging platform where users can create and publish blog posts.
 
 ## Features and Functionality:
-The main features of this project include user registration, authentication, and the ability to comment on blog posts.
+The main features of this project include user registration, authentication, blog post creation and the ability to comment on blog posts.
 
 ## Technologies Used:
-The technology used in building this project include HTML, CSS, JavaScript, Flask, MySql.
+The technology used in building this project include HTML, CSS, Python, Flask.
 
 ## Screenshots or Demo:
 Include screenshots or a link to a live demo if available. Visual representations can help readers understand the project’s appearance and functionality. This would be provided in the course of building the project.
 
 ### Roadmap and future enhancements:
-Share any future plans or potential improvements for the project. This could include additional features, performance optimizations, or scalability considerations.
+For this project, I intend to work on adding image to a post to serve as thumbnail, liking the post, sharing a post link to other people or social media, counting the number of people who have visited the post, deleting a blog post. The improvement will also be dependent on how big the application gets and what it needs
 
 ### Contact information:
+Oluwasanmi Idowu
 Include your name, along with contact information or links to personal portfolios or social media profiles.
 <!-- Photo by <a href="https://unsplash.com/@daniellajardim?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ella Jardim</a> on <a href="https://unsplash.com/photos/M0zs81FNm6s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> img5 -->
 
