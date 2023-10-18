@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+<div class="auth_layout-container">
+  <div class="form-layout">
+    <form id="form" class="form-control" method="POST">
+      <div class="form-elements">
+        <h1 class="form-title">Login</h1>
+        <p class="form-sub-title">
+          Welcome {{username}},
+          <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
+        </p><br><br>
+        <div class="form-group">
+          <label for="email" class="input-label">Email Address:</label><br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input-field"
+            placeholder="Enter your email address"
+            required
+          /><br /><br />
+
+          <label for="pwd" class="input-label">Password:</label><br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="input-field"
+            placeholder="Enter your password"
+            required
+          /><br /><br />
+        </div>
+        <div class="login-path">
+          <p>
+            Don't have an account?
+            <span><a href="/register">Register</a></span>
+        </div>
+
+        <button type="submit" class="primary-button">Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="image-layout"></div>
+</div>
+{% endblock %}

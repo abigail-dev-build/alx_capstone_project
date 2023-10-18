@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block title %}HomePage{% endblock %}
+{% block content %}
+<header>
+    <div class="intro-section"></div>
+    <div class="header">
+      <video id="background-video" autoplay loop muted>
+        <source src={{ url_for('static', filename='assets/background-video.mp4') }} type="video/mp4" />
+      </video>
+      <div class="side-one">
+        <div class="slogan">
+          <div>
+            <h1 class="slogan-header">Open Your Mind to Mindfulness</h1>
+            <!-- <p class="slogan-subheader">The blog of here and now</p> -->
+            <button class="getting-started" type="button">
+              <a href="/post">Get Started</a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="side-two">
+        <div class="profile-image"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-one">
+      <div class="section-one-container">
+        <h1 class="section-one-header">Recent Posts</h1>
+        <p class="section-one-subheader">
+          Mindfulness, Meditation and Everything in Between
+        </p>
+      </div>
+
+      <div class="blog-post">
+        {% for note in user.notes %}
+        <div class="thumbnail">
+          <img
+            src={{ url_for('static', filename='assets/pictures/blog-image-6.jpeg') }}
+            alt="thumbnail"
+            class="blog-image"
+          />
+        </div>
+        <div class="blog-content">
+          <h2 class="blog-title">5 Apps to help to meditate{{ note.title }}</h2>
+          <p>{{ note.category }}</p>
+          <p class="blog-text">
+            <!-- Create a blog post subtitle that summarizes your post in a few
+            short, punchy sentences and entices your audience to continue
+            reading.... -->
+            {{ note.data }}
+          </p>
+          <div class="divider"></div>
+          <div>
+            <p class="blog-comment">0 comments</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- <ul class="list-group list-group-flush" id="notes">
+        {% for note in user.notes %}
+        <li class="list-group-item">
+          {{ note.data }}
+          <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </li>
+        {% endfor %}
+      </ul> -->
+
+      <div class="button-wrapper">
+        <button type="button" class="more-post">More Posts</button>
+      </div>
+    </section>
+    <!-- <section class="section-two">b</section> -->
+  </main>
+  <footer class="footer-container">
+    <div class="contact">
+      <div class="footer-logo">
+        <h1 class="logo-title">Breathe</h1>
+        <p class="logo-subtitle">My mindfulness blog</p>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="subscription">
+        <p class="subscription-text">Get my daily tips on mindful living</p>
+        <label for="email" class="subscription-label">Email *</label><br>
+        <input type="email" name="email" id="email" class="subscription-input" /><button class="subscription-button" type="button">Subscribe</button>
+      </div>
+      <div class="footer-divider"></div>
+      <div>
+        <p class="owner-contact">Breathe by Oluwasanmi Idowu</p>
+        <p class="owner-contact">Mail: oluwasanmiidowu@gmail.com</p>
+        <p class="owner-contact">Phone number: 123-456-7890</p>
+      </div>
+    </div>
+    <div class="footer">© 2035 by Oluwasanmi Idowu.</div>
+  </footer>
+{% endblock %}

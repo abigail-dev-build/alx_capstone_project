@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block title %}Create Post{% endblock %} {% block
+content %}
+<div class="form-wrapper">
+  <form class="form-container" method="'POST">
+    <h1 class="form-header">Add Post</h1>
+    <div class="">
+      <label for="title" class="input-label">Title:</label><br />
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="text-input"
+        placeholder="Title"
+        required
+      /><br /><br />
+
+      <label for="category" class="input-label">Category:</label><br />
+      <select name="category" id="category" required class="dropdown">
+        <option value="technology">Technology</option>
+        <option value="travel">Travel</option>
+        <option value="wellness">Wellness</option>
+        <option value="movies">Movies</option></select
+      ><br /><br />
+
+      <label for="author" class="input-label">Author:</label><br />
+      <input
+        type="text"
+        name="author"
+        id="author"
+        class="text-input"
+        placeholder="John Doe"
+        required
+      /><br /><br />
+
+      <!-- <div class="image-form-group">
+        <h3>Thumbnail</h3>
+        <p>Upload a cover image for this post</p>
+        <label for="image" class="image-label">Upload File </label><br />
+        <input
+          type="file"
+          name="image"
+          id="file-image"
+          class=""
+          accept="image/*"
+          max-size="2000"
+          required
+        />
+        <br /><br />
+      </div> -->
+
+      <label for="article" class="input-label">Content:</label><br />
+      <textarea
+        id="article"
+        name="article"
+        placeholder="Tell your story..."
+        class="textarea-input"
+      ></textarea>
+      <br /><br />
+    </div>
+    <button type="submit" class="btn-secondary">Publish</button>
+  </form>
+</div>
+{% endblock %}

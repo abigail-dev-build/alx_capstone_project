@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} {% block
+content %}
+<div class="auth_layout-container">
+  <div class="form-layout">
+    <form id="form" class="form-control" method="POST">
+      <div>
+        <h1 class="form-title">Register</h1>
+        <p class="form-sub-title">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <div class="form-group">
+          <label for="username" class="input-label">Username:</label><br />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="input-field"
+            placeholder="Enter your username"
+            required
+          /><br /><br />
+
+          <label for="email" class="input-label">Email Address:</label><br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input-field"
+            placeholder="Enter your email address"
+            required
+          /><br /><br />
+
+          <label for="pwd" class="input-label">Password:</label><br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="input-field"
+            placeholder="Enter your password"
+            required
+          /><br /><br />
+
+          <label for="confirm-pwd" class="input-label">Confirm Password:</label
+          ><br />
+          <input
+            type="password"
+            name="confirm_password"
+            class="input-field"
+            id="confirm-password"
+            confirm="password"
+            placeholder="Confirm your password"
+            required
+          /><br /><br />
+        </div>
+        <div class="form-extras">
+          <div class="form-check">
+            <input type="checkbox" id="terms" />
+            <label class="form-check-label" for="terms">
+              Agree to
+              <span><a href="#">Terms & conditions</a></span></label
+            ><br /><br />
+          </div>
+
+          <div class="login-path">
+            <p>
+              Have an account?
+              <span><a href="/login">Login</a></span>
+            </p>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button">Register</button>
+      </div>
+    </form>
+  </div>
+  <div class="register_image-layout"></div>
+</div>
+{% endblock %}
