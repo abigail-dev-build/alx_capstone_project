@@ -93,6 +93,7 @@
     min-height: 220px;
     display: flex;
     margin-bottom: 24px;
+    cursor: pointer;
   }
   .thumbnail {
     width: 30%;

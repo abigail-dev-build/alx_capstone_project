@@ -11,6 +11,7 @@ def create_app() :
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "when the bell rings"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['MESSAGE_FLASHING_OPTIONS'] = {'duration': 2}
     db.init_app(app)
     
     from .views import views

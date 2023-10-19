@@ -33,7 +33,8 @@
       </div>
 
       {% for note in user.notes %}
-      <div class="blog-post">
+      <!-- <a href="page.html"></a> -->
+      <div class="blog-post" onclick="redirectToPost('{{ url_for('views.hello', id=note.id) | safe }}')">
         <div class="thumbnail">
           <img
             src={{ url_for('static', filename='assets/pictures/blog-image-6.jpeg') }}
@@ -83,3 +84,5 @@
     <div class="footer">© 2035 by Oluwasanmi Idowu.</div>
   </footer>
 {% endblock %}
+
+

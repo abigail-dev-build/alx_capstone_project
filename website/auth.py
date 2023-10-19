@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -15,16 +15,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                print('Logged in successfully!')
-                # flash('Logged in successfully!', category='success')
+                flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                # flash('Incorrect password, try again.', category='error')
-                print('Invalid details, try again')
+                flash('Invalid details, try again.', category='error')
         else:
-            # flash('Email does not exist.', category='error')
-            print('User does not exist.')
+            flash('User does not exist.', category='error')
 
     return render_template("login.html", user=current_user)
 
@@ -43,24 +40,19 @@ def register() :
         cpassword = request.form.get('confirm_password')
         
         if len(email) < 4:
-            # flash('Email must be greater than 3 characters.', category='error')
-            print('Email must be greater than 3 characters')
+            flash('Email must be greater than 3 characters.', category='error')
         elif len(username) < 2:
-            # flash('Username must be greater than 1 character.', category='error')
-            print('Username must be greater than 1 character')
+            flash('Username must be greater than 1 character.', category='error')
         elif password != cpassword:
-            # flash('Passwords don\'t match.', category='error')
-            print('Passwords don\'t match.')
+            flash('Passwords don\'t match.', category='error')
         elif len(password) < 7:
-            # flash('Password must be at least 7 characters.', category='error')
-            print('Password must be at least 7 characters.')
+            flash('Password must be at least 7 characters.', category='error')
         else:
-            # flash('Account created successfully!', category='success')
             new_user = User(email=email, username=username, password=generate_password_hash(
                 password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            print('Account created successfully!')
+            flash('Account created successfully!', category='success')
             return redirect(url_for('auth.login'))
     return render_template('register.html', user=current_user)

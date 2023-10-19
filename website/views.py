@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Post
+from .models import Post, Comment
 from . import db
 
 views = Blueprint("views", __name__ )
@@ -20,20 +20,22 @@ def create_post() :
         author = request.form.get('author')
 
         if len(content) < 1:
-            # flash('Note is too short!', category='error') 
-            print('Post cannot be empty!')
+            flash('Post cannot be empty!', category='error') 
         elif len(title) < 1:
-            print('Title cannot be empty!')
+            flash('Title cannot be empty!', category='error')
         elif len(category) < 1:
-            print('Category cannot be empty!')
+            flash('Category cannot be empty!', category='error')
         elif len(author) < 1:
-            print('Author cannot be empty!')
+            flash('Author cannot be empty!', category='error')
         else:
             new_post = Post(content=content, title=title, category=category, author=author, user_id=current_user.id) 
             db.session.add(new_post)
             db.session.commit()
-            # flash('Note added!', category='success')
-            print('Post added!')
+            flash('Post added!', category='success')
             return redirect(url_for('views.home'))
 
     return render_template("blog-create.html", user=current_user)
+
+@views.route('/post/<int:id>')
+def hello(id):
+    return render_template('single-post.html', id=id, user=current_user)

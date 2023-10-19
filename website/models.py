@@ -24,3 +24,13 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
     notes = db.relationship('Post')
+    
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=False)
+    email = db.Column(db.String(150), unique=False)
+    comment = db.Column(db.String(150), unique=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post = db.relationship('Post')
+    status = db.Column(db.Boolean, default=False)

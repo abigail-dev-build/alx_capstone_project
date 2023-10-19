@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} {% block
+    content %}
+<!-- {% for note in user.notes %}
+<ul>
+    <li>{{note.id}}</li>
+</ul>
+{% endfor %} -->
+<form class="" method="POST">
+    <div class="">
+        <label class="" for="username">Username</label>
+        <input class="" type="text" id="username" name="username" />
+    </div>
+
+    <div class="">
+        <label class="" for="email">Email</label>
+        <input class="" type="email" id="email" name="email"/>
+    </div>
+
+    <div class="">
+        <label class="" for="comment">Comment</label>
+        <input class="" type="text" id="comment" name="comment"/>
+    </div>
+    <div class="">
+        <button class="" type="submit">Comment</button>
+    </div>
+</form>
+    {% endblock %}
