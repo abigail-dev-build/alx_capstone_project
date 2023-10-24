@@ -8,6 +8,7 @@ class Post(db.Model):
     title = db.Column(db.String(500))
     category = db.Column(db.String(50))
     author = db.Column(db.String(150))
+    # comments = db.Column(db.Integer, default=0)
     # image = image_attachment('UserPicture')
     content = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())

@@ -32,9 +32,8 @@
         </p>
       </div>
 
-      {% for note in user.notes %}
-      <!-- <a href="page.html"></a> -->
-      <div class="blog-post" onclick="redirectToPost('{{ url_for('views.hello', id=note.id) | safe }}')">
+      {% for post in user.notes %}
+      <div class="blog-post">
         <div class="thumbnail">
           <img
             src={{ url_for('static', filename='assets/pictures/blog-image-6.jpeg') }}
@@ -43,14 +42,17 @@
           />
         </div>
         <div class="blog-content">
-          <h2 class="blog-title">{{ note.title }}</h2>
-          <p class="blog-category">{{ note.category }}</p>
-          <p class="blog-text">
-            {{ note.content }}
+          <h2 class="blog-title" onclick="redirectToPost('{{ url_for('views.hello', id=post.id) | safe }}')">{{ post.title }}</h2>
+          <p class="blog-category">{{ post.category }}</p>
+       
+          <p class="blog-text" id="content">
+            {{ post.content }}
           </p>
+          <!-- <p>{{post.comments}}</p> -->
           <div class="divider"></div>
-          <div>
+          <div class="content-footer">
             <p class="blog-comment">0 comments</p>
+            <button type="button" class="deleteContent" onClick="deletePost({{ post.id }})">&times;</button>
           </div>
         </div>
       </div>

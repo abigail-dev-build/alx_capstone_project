@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from .models import Post, Comment
 from . import db
+import json
 
 views = Blueprint("views", __name__ )
 
@@ -36,6 +37,33 @@ def create_post() :
 
     return render_template("blog-create.html", user=current_user)
 
-@views.route('/post/<int:id>')
+@views.route('delete-post', methods=['POST'])
+def delete_post():
+    note = json.loads(request.data)
+    noteId = note['postId']
+    note  = Post.query.get(noteId)
+    # if note:
+    if note.user_id == current_user.id:
+        db.session.delete(note)
+        db.session.commit()
+        # flash('Post deleted successfully!', category='success')
+            
+    return jsonify({})
+
+@views.route('/post/<int:id>', methods=['POST', 'GET'])
 def hello(id):
-    return render_template('single-post.html', id=id, user=current_user)
+    post = Post.query.get(id)
+    posts = Post.query.order_by(Post.id.desc()).all()
+    comments = Comment.query.filter_by(post_id=post.id).all()
+    if request.method == 'POST': 
+        username = request.form.get('username')
+        email = request.form.get('email')
+        comment = request.form.get('comment')
+        message = Comment(username=username, email=email, comment=comment, post_id=post.id)
+        db.session.add(message)
+        post.message += 1
+        flash('Your comments has been submitted', category='success')
+        db.session.commit()
+        # return redirect(request.url)
+        return redirect('/')
+    return render_template('single-post.html', id=id, user=current_user, posts=posts, comments=comments)

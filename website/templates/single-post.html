@@ -1,27 +1,117 @@
 {% extends "base.html" %} {% block title %}Register{% endblock %} {% block
-    content %}
-<!-- {% for note in user.notes %}
-<ul>
-    <li>{{note.id}}</li>
-</ul>
-{% endfor %} -->
-<form class="" method="POST">
-    <div class="">
-        <label class="" for="username">Username</label>
-        <input class="" type="text" id="username" name="username" />
+content %}
+<nav class="navbar">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" id="home" href="/">Home</a>
+      <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+    </div>
+  </nav>
+  
+<div class="single-post-wrapper" role="article">
+  {% for single_post in posts %}
+  <div>
+    <div class="date-header">
+      <p class="date">{{single_post.date.strftime('%d %B %Y')}}</p>
+      <!-- <p class="">{{single_post.date.strftime('%Y-%m-%d %H:%M:%S')}}</p> -->
+      <div class="more-options"><i class="material-icons">&#xe5d4;</i>
+        <div class="share-button">
+            Share Post
+        </div>
+    </div>
     </div>
 
-    <div class="">
-        <label class="" for="email">Email</label>
-        <input class="" type="email" id="email" name="email"/>
+    <h1 class="post-title">{{single_post.title}}</h1>
+
+    <div class="post-cover-image">
+      <img src={{ url_for('static',
+      filename='assets/pictures/blog-image-6.jpeg') }} alt="post image" />
     </div>
 
+    <p class="random-text">
+      Welcome to your blog post. Use this space to connect with your readers and
+      potential customers in a way that’s current and interesting. Think of it
+      as an ongoing conversation where you can share updates about business,
+      trends, news, and more.
+    </p>
+    <p class="post-content">{{single_post.content}}</p>
+    <div class="divider"></div>
     <div class="">
-        <label class="" for="comment">Comment</label>
-        <input class="" type="text" id="comment" name="comment"/>
+      <p>0 Comments</p>
+      {% for comment in comments %}
+      <div class="comment-section">
+        <p class="comment-name">{{comment.username}}</p>
+        <p class="comment-date">{{comment.date.strftime('%Y-%m-%d %H:%M:%S')}}</p>
+        <p class="comment-message">{{comment.comment}}</p>
+      </div>
+      {% endfor %}
     </div>
-    <div class="">
-        <button class="" type="submit">Comment</button>
+
+    <div class="comment-form-wrapper">
+      <form class="comment-form" method="POST">
+        <h1>Post Comment</h1>
+        <div class="form-group">
+          <input
+            class="form-input"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email Address"
+          />
+        </div>
+
+        <div class="form-group">
+          <textarea
+            id="comment"
+            name="comment"
+            placeholder="Enter your comment here..."
+            class="form-textarea"
+          ></textarea>
+        </div>
+        <br />
+        <br />
+        <div class="form-buttons">
+          <button class="" type="submit">Post Comment</button>
+        </div>
+      </form>
     </div>
-</form>
-    {% endblock %}
+  </div>
+  {% endfor %}
+</div>
+
+<footer class="footer-container">
+  <div class="contact">
+    <div class="footer-logo">
+      <h1 class="logo-title">Breathe</h1>
+      <p class="logo-subtitle">My mindfulness blog</p>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="subscription">
+      <p class="subscription-text">Get my daily tips on mindful living</p>
+      <label for="email" class="subscription-label">Email *</label><br />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="subscription-input"
+      /><button class="subscription-button" type="button">Subscribe</button>
+    </div>
+    <div class="footer-divider"></div>
+    <div>
+      <p class="owner-contact">Breathe by Oluwasanmi Idowu</p>
+      <p class="owner-contact">Mail: oluwasanmiidowu@gmail.com</p>
+      <p class="owner-contact">Phone number: 123-456-7890</p>
+    </div>
+  </div>
+  <div class="footer">© 2035 by Oluwasanmi Idowu.</div>
+</footer>
+{% endblock %}
